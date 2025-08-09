@@ -1,7 +1,8 @@
 FROM node:18-alpine
 
-# Install curl for health checks
-RUN apk add --no-cache curl
+# Install curl for health checks and fix SSL
+RUN apk add --no-cache curl ca-certificates \
+    && update-ca-certificates
 
 # Set working directory
 WORKDIR /app
